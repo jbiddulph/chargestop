@@ -1,0 +1,75 @@
+# Product Requirements Document (PRD)
+
+## Project Name
+ChargeStop
+
+## Overview
+ChargeStop is a Next.js web application that helps users find electric vehicle (EV) chargers on an interactive map. The app integrates with Supabase for data storage and authentication, and uses MapBox for map rendering and geolocation features. Users can log in, manage their profiles, view chargers, mark favourites, and—if they are admins—manage all users and chargers. The app is designed for both regular users and administrators, with role-based access control.
+
+## Goals
+- Help users easily locate EV chargers near them.
+- Allow users to plan routes to chargers and visualize their car's remaining range.
+- Provide a seamless, secure authentication and profile management experience.
+- Enable admins to manage users and charger data efficiently.
+
+## Features
+
+### 1. Map & Location
+- Display all chargers from the Supabase `Chargers` table on a MapBox map.
+- Show the user's current live location on the map.
+- When a user taps a charger, show details and an option to "Drive Here."
+- Draw a driving route (polyline) from the user's location to the selected charger.
+- Allow users to input their car's remaining range (in miles); draw a semi-transparent circle (20% opacity) around their location with that radius.
+
+### 2. Authentication & User Management
+- Supabase authentication (sign up, login, logout, password reset).
+- Users can update their profile (name, email, etc.).
+- Role-based permissions:
+  - Regular users: access to map, favourites, and profile.
+  - Admin users: access to admin dashboard with full CRUD for users and chargers.
+- Restrict certain pages/features to logged-in users only.
+
+### 3. Favourites
+- Users can favourite chargers.
+- Favourites list is accessible from the user's profile/dashboard.
+
+### 4. Admin Dashboard
+- Admins can view, create, update, and delete users and chargers.
+- Admin dashboard is only accessible to users with the admin role.
+
+### 5. General
+- Responsive, modern UI.
+- Secure handling of API keys and tokens (MAPBOX_TOKEN, Supabase keys from `.env`).
+- All data interactions use Supabase (hosted in the `jbiddulph` organization, project: `stopcharge`).
+
+## Technical Requirements
+
+- **Frontend:** Next.js (React)
+- **Backend/Data:** Supabase (Chargers table, Auth, RBAC)
+- **Map:** MapBox (MAPBOX_TOKEN from `.env`)
+- **Authentication:** Supabase Auth
+- **Hosting:** Vercel or similar (not required for MVP)
+- **Environment Variables:** Supabase project URL, anon key, and MAPBOX_TOKEN provided in `.env`
+
+## User Stories
+
+1. **As a user**, I can see all available chargers on a map.
+2. **As a user**, I can see my current location on the map.
+3. **As a user**, I can log in, log out, and update my profile.
+4. **As a user**, I can favourite chargers and view my favourites list.
+5. **As a user**, I can tap a charger to see details and get a driving route from my location.
+6. **As a user**, I can enter my car's remaining range and see a circle on the map showing how far I can go.
+7. **As an admin**, I can manage (CRUD) all users and chargers via a dashboard.
+8. **As an admin**, I can restrict access to the admin dashboard to admin users only.
+9. **As a user**, I cannot access admin features unless I have the admin role.
+
+## Out of Scope (for MVP)
+- Payment processing
+- Charger booking/reservation
+- Mobile app (web only for MVP)
+- Social features (comments, reviews, etc.)
+
+## Open Questions
+- What fields are required for the Chargers table? (Assume: id, name, location (lat/lng), status, etc.)
+- Should users be able to add new chargers, or is this admin-only?
+- What are the exact roles and permissions? (Assume: user, admin) 
