@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@mapbox/polyline": "^1.2.1",
+    "@supabase/supabase-js": "^2.50.0",
+    "mapbox-gl": "^3.12.0",
+    "react-map-gl": "^8.0.4"
+  },
+  "devDependencies": {
+    "@types/mapbox-gl": "^3.4.1"
+  }
+}
