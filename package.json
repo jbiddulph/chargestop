@@ -3,7 +3,9 @@
     "@mapbox/polyline": "^1.2.1",
     "@supabase/supabase-js": "^2.50.0",
     "mapbox-gl": "^3.12.0",
-    "react-map-gl": "^8.0.4"
+    "react-map-gl": "^8.0.4",
+    "zod": "^3.25.67",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^3.4.1"
